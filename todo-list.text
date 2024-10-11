@@ -1,0 +1,12 @@
+initialisasi : yarn  init
+create express server : yarn add  express nodemon
+postman : Testing
+basic routing
+http method
+refactor & project Structure : Folder
+
+middleware
+crud dammy
+
+conection database mysql2
+git = yarn add mysql2
