@@ -12,6 +12,9 @@ conection database mysql2
 git = yarn add mysql2
 
 setup enviroment
-yarn add dotenv
+git = yarn add dotenv
+
+upload file menggunakan multer
+yar add multer
 
 source youtube : https://youtu.be/jBAZPXNQq0Y?si=KgSSb1qhDs9h-txK
