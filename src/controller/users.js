@@ -14,22 +14,53 @@ const index = async (req, res) => {
   }
 }
 
-const create = (req, res) => {
-  res.json({
-    message: "successfully post users",
-  });
-}
+const create = async (req, res) => {
+  const {body} = req;
+  try {
+    await modelUsers.createNewUser(body);
+    res.json({
+      message: "Successfully created user",
+      data: body,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+      serverMessage: error.message,
+    });
+  }
+};
 
 const update = (req, res) => {
-  res.json({
-    message: "successfully update users",
-  });
+  const {body} = req;
+  const {id} = req.params;
+  try {
+    modelUsers.updateUser(body, id);
+    res.json({
+      message: "successfully update users",
+      data: body,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "server error",
+      serverMessage: error
+    });
+  }
 }
 
 const destroy = (req, res) => {
-  res.json({
-    message: "successfully delete users",
-  });
+  const {id} = req.params;
+  try {
+    modelUsers.deleteUser(id);
+    res.json({
+      message: "successfully delete user",
+      data: id
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "server error",
+      serverMessage: error
+    });
+  }
 }
 
 module.exports = {

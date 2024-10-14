@@ -11,4 +11,7 @@ crud dammy
 conection database mysql2
 git = yarn add mysql2
 
+setup enviroment
+yarn add dotenv
+
 source youtube : https://youtu.be/jBAZPXNQq0Y?si=KgSSb1qhDs9h-txK

@@ -14,22 +14,53 @@ const index = async (req, res) => {
   }
 }
 
-const create = (req, res) => {
-  res.json({
-    message: "successfully post customers",
-  });
+const create = async (req, res) => {
+  const {body} = req;
+  try {
+    await modelCustomers.createNewCustomer(body);
+    res.json({
+      message: "Successfully created customers",
+      data: body,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+      serverMessage: error.message,
+    });
+  }
+};
+
+const update = async (req, res) => {
+  const {body} = req;
+  const {id} = req.params;
+  try {
+    await modelCustomers.updateCustomer(body, id);
+    res.json({
+      message: "successfully update customers",
+      data: body,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+      serverMessage: error.message,
+    });
+  }
 }
 
-const update = (req, res) => {
-  res.json({
-    message: "successfully update customers",
-  });
-}
-
-const destroy = (req, res) => {
-  res.json({
-    message: "successfully delete customers",
-  });
+const destroy = async (req, res) => {
+  const {id} = req.params;
+  try {
+    await modelCustomers.deleteCustomer(id);
+    res.json({
+      message: "successfully delete customers",
+      data: id,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+      serverMessage: error.message,
+    });
+  }
 }
 
 module.exports = {
